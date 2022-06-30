@@ -582,14 +582,14 @@ video {
 .mb-10 {
   margin-bottom: 2.5rem;
 }
+.mb-4 {
+  margin-bottom: 1rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
 .-ml-px {
   margin-left: -1px;
-}
-.mb-4 {
-  margin-bottom: 1rem;
 }
 .block {
   display: block;

@@ -8,9 +8,23 @@
   <div class="container mx-auto md:flex">
     <div class="md:w-1/2">
       <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post {{ $post->titulo }}">
-      <div class="p-3">
+
+      <div class="p-3 flex items-center gap-4">
+        <form>
+          <div class="my-4">
+            <button type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+        </form>
+
         <p>0 Likes</p>
       </div>
+
       <div>
         <p class="font-bold">{{ $post->user->username }}</p>
         <p class="text-sm text-gray-500">
@@ -21,16 +35,15 @@
         </p>
       </div>
 
-      <!-- First we have to assure auth directive is executed in order to check that the user id of the post 
-        is the same than the user id of the authenticated user -->
+      <!-- First we have to assure auth directive is executed in order to check that the user id of the post
+           is the same than the user id of the authenticated user -->
       @auth
         @if ($post->user_id === auth()->user()->id)
           <form method="POST" action="{{ route('posts.destroy', $post) }}">
             <!-- Spoofing method -->
             @method('DELETE')
             @csrf
-            <input type="submit"
-              value="Eliminar publicación"
+            <input type="submit" value="Eliminar publicación"
               class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer" />
           </form>
         @endif

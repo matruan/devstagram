@@ -25,12 +25,14 @@ class PostController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('posts.create');
     }
 
-    public function store(Request $request){
-        $this->validate($request,[
+    public function store(Request $request)
+    {
+        $this->validate($request, [
             'titulo' => 'required|max:255',
             'descripcion' => 'required',
             'imagen' => 'required'
@@ -50,7 +52,7 @@ class PostController extends Controller
         // $post->imagen = $request->imagen;
         // $post->user_id = auth()->user()->id;
         // $post->save();
-        
+
         $request->user()->posts()->create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
@@ -64,8 +66,17 @@ class PostController extends Controller
     public function show(User $user, Post $post)
     {
         return view('posts.show', [
-          'post' => $post,
-          'user' => $user
+            'post' => $post,
+            'user' => $user
         ]);
+    }
+
+    public function destroy(Post $post)
+    {
+        if ( $post->user_id === auth()->user()->id ) {
+            dd('Si es la misma persona'); 
+        } else {
+            dd('No es la misma persona');
+        }
     }
 }

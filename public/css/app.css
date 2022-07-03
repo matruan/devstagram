@@ -594,6 +594,9 @@ video {
 .mb-6 {
   margin-bottom: 1.5rem;
 }
+.mt-4 {
+  margin-top: 1rem;
+}
 .block {
   display: block;
 }
@@ -617,6 +620,9 @@ video {
 }
 .h-5 {
   height: 1.25rem;
+}
+.max-h-96 {
+  max-height: 24rem;
 }
 .w-full {
   width: 100%;
@@ -659,6 +665,9 @@ video {
 }
 .gap-2 {
   gap: 0.5rem;
+}
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 .rounded-lg {
   border-radius: 0.5rem;
@@ -859,6 +868,10 @@ video {
 .hover\:bg-sky-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;

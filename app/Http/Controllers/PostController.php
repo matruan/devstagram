@@ -16,7 +16,7 @@ class PostController extends Controller
     //
     public function index(User $user)
     {
-        $posts = Post::where('user_id', $user->id)->paginate(20);
+        $posts = Post::where('user_id', $user->id)->paginate(15);
 
 
         return view('dashboard', [
@@ -73,10 +73,8 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if ( $post->user_id === auth()->user()->id ) {
-            dd('Si es la misma persona'); 
-        } else {
-            dd('No es la misma persona');
-        }
+       $this->authorize('delete', $post);
+       $post->delete();
+       return redirect()->route('posts.index', auth()->user()->username);
     }
 }

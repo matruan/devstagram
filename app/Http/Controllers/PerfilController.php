@@ -45,7 +45,7 @@ class PerfilController extends Controller
         // Guardar cambios
         $usuario = User::find(auth()->user()->id);
         $usuario->username = $request->username;
-        $usuario->imagen = $nombreImagen ?? '';
+        $usuario->imagen = $nombreImagen ?? auth()->user()->imagen ?? null;
         $usuario->save();
 
         // Redireccionar

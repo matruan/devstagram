@@ -29,6 +29,54 @@
             accept=".jpg, .jpeg, .png" />
         </div>
 
+        <div class="mb-5">
+          <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
+            Email
+          </label>
+          <input id="email" name="email" type="text"
+            class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror"
+            value="{{ auth()->user()->email }}" />
+          @error('email')
+            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+          @enderror
+        </div>
+
+        @if (session('mensaje'))
+          <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+            {{ session('mensaje') }}
+          </p>
+        @endif
+
+        <div class="mb-5">
+          <label for="old_password" class="mb-2 block uppercase text-gray-500 font-bold">
+            Password actual
+          </label>
+          <input id="old_password" name="old_password" type="password" placeholder="Password actual"
+            class="border p-3 w-full rounded-lg @error('old_password') border-red-500 @enderror" />
+          @error('old_password')
+            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+          @enderror
+        </div>
+
+        <div class="mb-5">
+          <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
+            Cambiar password
+          </label>
+          <input id="password" name="password" type="password" placeholder="Cambiar password"
+            class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror" />
+          @error('password')
+            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+          @enderror
+        </div>
+
+        <div class="mb-5">
+          <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">
+            Repetir Password
+          </label>
+          <input id="password_confirmation" name="password_confirmation" type="password" placeholder="Repite tu password"
+            class="border p-3 w-full rounded-lg" />
+        </div>
+
         <input type="submit" value="Guardar cambios"
           class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg" />
 

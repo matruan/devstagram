@@ -10,16 +10,9 @@
       <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post {{ $post->titulo }}">
 
       <div class="p-3 flex items-center gap-4">
-
         @auth
-        
           <livewire:like-post :post="$post" />
-
         @endauth
-
-        <p class="font-bold">{{ $post->likes->count() }}
-          <span class="font-normal"> Likes </span>
-        </p>
       </div>
 
       <div>
